@@ -1,1 +1,2 @@
-# magi-langchain-agent
+# MAGI - Langchain
+
