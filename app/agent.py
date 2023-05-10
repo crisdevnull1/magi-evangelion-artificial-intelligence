@@ -3,9 +3,9 @@ from typing import Any
 
 import inject
 from langchain.llms import OpenAI
+from prompt_templates import prompt_templates as template
 
 from app.config import Config
-from prompt_templates import prompt_templates as template
 
 
 class Agent:
