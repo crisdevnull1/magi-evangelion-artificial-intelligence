@@ -4,7 +4,12 @@ Este proyecto tiene como objetivo replicar la inteligencia artificial llamada MA
 Melchor – Akagi como científica. 🔬
 Baltasar – Akagi como madre. 👩‍👧‍👦
 Gaspar – Akagi como mujer. 💃
+
 Las MAGI son utilizadas para operar la base de NERV y para "gobernar" Tokio-3.
+
+<p align="center">
+  <img src="https://images4.alphacoders.com/135/thumb-1920-135806.jpg" alt="alt text" width="300" height="200">
+</p>
 
 ## Descripción 📝
 Este proyecto Python utiliza el modelo de lenguaje GPT-4 de OpenAI para simular las respuestas de las tres supercomputadoras MAGI. Al hacer una pregunta, el programa procesa la pregunta en el contexto de cada personalidad (científica, madre y mujer) y luego proporciona un resumen de las respuestas generadas.
