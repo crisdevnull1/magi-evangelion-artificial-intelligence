@@ -15,7 +15,7 @@ Las MAGI son utilizadas para operar la base de NERV y para "gobernar" Tokio-3.
 Este proyecto Python utiliza el modelo de lenguaje GPT-4 de OpenAI para simular las respuestas de las tres supercomputadoras MAGI. Al hacer una pregunta, el programa procesa la pregunta en el contexto de cada personalidad (científica, madre y mujer) y luego proporciona un resumen de las respuestas generadas.
 
 ## Requisitos previos 📚
-Para ejecutar este proyecto, es necesario contar con una API Key de OpenAI, la cual se debe configurar en la variable de entorno OPENAI_API_KEY.
+Para ejecutar este proyecto, es necesario contar con una API Key de OpenAI, la cual se debe configurar en la variable de entorno OPENAI_API_KEY creando el archivo `.env.local` e ingresando el valor de la API KEY. Finalmente, puedes ejecutar `python main.py ask "cual es el sentido de la vida?"`
 
 ## Uso 🚀
 Clone el repositorio en su computadora local.
