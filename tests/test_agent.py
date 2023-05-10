@@ -1,6 +1,8 @@
 import unittest
 from unittest.mock import MagicMock
-from app.agent import ResponseProcessor, Agent
+
+from app.agent import Agent, ResponseProcessor
+
 
 class TestResponseProcessor(unittest.TestCase):
     def test_process_scientist_response(self):
@@ -32,9 +34,15 @@ class TestResponseProcessor(unittest.TestCase):
 
     def test_ask(self):
         agent = Agent()
-        agent.response_processor.process_scientist_response = MagicMock(return_value="respuesta de científico")
-        agent.response_processor.process_mother_response = MagicMock(return_value="respuesta de madre")
-        agent.response_processor.process_woman_response = MagicMock(return_value="respuesta de mujer")
+        agent.response_processor.process_scientist_response = MagicMock(
+            return_value="respuesta de científico"
+        )
+        agent.response_processor.process_mother_response = MagicMock(
+            return_value="respuesta de madre"
+        )
+        agent.response_processor.process_woman_response = MagicMock(
+            return_value="respuesta de mujer"
+        )
         agent.summarize_llm = MagicMock(return_value="resumen de respuestas")
 
         summary = agent.ask("pregunta de ejemplo")
@@ -45,6 +53,7 @@ class TestResponseProcessor(unittest.TestCase):
         agent.summarize_llm.assert_called_once()
 
         self.assertEqual(summary, "resumen de respuestas")
+
 
 if __name__ == "__main__":
     unittest.main()
