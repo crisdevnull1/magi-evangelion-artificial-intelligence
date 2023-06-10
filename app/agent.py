@@ -2,9 +2,8 @@ import datetime
 import logging
 import os
 import sys
-from typing import Any, Dict
-
-from langchain.llms import OpenAI
+from typing import Dict
+from langchain.llms import OpenAIChat
 
 from app import prompts
 from app.config import Config
@@ -12,7 +11,7 @@ from app.config import Config
 
 class OpenAILanguageModel:
     def __init__(self, api_key: str, model_name: str, temperature: float):
-        self.llm = OpenAI(
+        self.llm = OpenAIChat(
             openai_api_key=api_key, model_name=model_name, temperature=temperature
         )
 
@@ -82,7 +81,7 @@ class Logger:
         self.logger.info("Resumen: %s", summary)
 
 
-class MAGI:
+class Agent:
     roles = ["scientist", "mother", "woman"]
 
     def __init__(
@@ -111,7 +110,7 @@ class MAGI:
         return summary
 
 
-def new_magi_ai(config: Config) -> MAGI:
+def new_magi_ai(config: Config) -> Agent:
     api_key = config.OPENAI_API_KEY
     model_name = "gpt-4"
 
@@ -121,4 +120,4 @@ def new_magi_ai(config: Config) -> MAGI:
     summary_processor = SummaryProcessor(llm=summarize_llm)
     logger = Logger()
 
-    return MAGI(config, question_processor, summary_processor, logger)
+    return Agent(config, question_processor, summary_processor, logger)

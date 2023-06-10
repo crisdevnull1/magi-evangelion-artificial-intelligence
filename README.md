@@ -30,7 +30,7 @@ Para ejecutar este proyecto, es necesario contar con una API Key de OpenAI, la c
    ```
 4. Ejecute la aplicación utilizando:
    ```
-   python main.py ask "como me suscribo a crisdevnull en youtube?"
+   python magi.py ask "como me suscribo a crisdevnull en youtube?"
    ```
 
 ## Contribuciones 👥
