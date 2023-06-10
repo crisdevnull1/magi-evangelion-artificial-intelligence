@@ -18,6 +18,7 @@ class Config:
     def __init__(self):
         self.OPENAI_API_KEY = os.environ["OPENAI_API_KEY"]
 
+
 def configure(binder):
     binder.bind(Config, Config())
 
