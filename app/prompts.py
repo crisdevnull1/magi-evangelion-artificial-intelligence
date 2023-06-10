@@ -3,8 +3,8 @@ from langchain import PromptTemplate
 summarize_answers = PromptTemplate(
     input_variables=["text"],
     template=(
-        "Extrae los puntos releventes de los siguientes punto de vista:\n"
-        "RESUMEN SENCILLO EN FORMATO MARKDOWN: {text}"
+        "Extrae los puntos positivos y negativos de los siguientes textos y genera un resumen de estos:\n"
+        "Escribe tu respuesta utilizando formato markdown: {text}"
     ),
 )
 

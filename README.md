@@ -13,9 +13,16 @@ Este proyecto Python utiliza el modelo de lenguaje GPT-4 de OpenAI para simular 
 Para ejecutar este proyecto, es necesario contar con una API Key de OpenAI, la cual se debe configurar en la variable de entorno OPENAI_API_KEY.
 
 ## Uso 🚀
-Clone el repositorio en su computadora local.
-Instale las dependencias necesarias utilizando pip install -r requirements.txt.
-Ejecute el script principal y proporcione la pregunta como argumento.
+1. Clone el repositorio en su computadora local.
+2. Instale las dependencias necesarias utilizando pip install -r requirements.txt.
+3. Crea el archivo .env.local e incluye lo siguiente:
+   ```bash
+   OPENAI_API_KEY= # aqui va tu api key de OpenAI
+   ```
+4. Ejecute la aplicación utilizando:
+   ```
+   python main.py ask "como me suscribo a crisdevnull en youtube?"
+   ```
 
 ## Contribuciones 👥
 Si desea contribuir al proyecto, no dude en hacer un fork del repositorio y enviar una solicitud de Pull Request con sus cambios.

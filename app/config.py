@@ -17,10 +17,6 @@ except ImportError:
 class Config:
     def __init__(self):
         self.OPENAI_API_KEY = os.environ["OPENAI_API_KEY"]
-        self.PINECONE_API_KEY = os.environ["PINECONE_API_KEY"]
-        self.PINECONE_ENVIRONMENT = os.environ["PINECONE_ENVIRONMENT"]
-        self.PINECONE_INDEX = os.environ["PINECONE_INDEX"]
-
 
 def configure(binder):
     binder.bind(Config, Config())

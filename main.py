@@ -1,7 +1,13 @@
+import logging
 import fire
+from app.agent import new_magi_ai
+from app.config import Config
 
-from app.agent import Agent
+def main():
+    logging.basicConfig(level=logging.DEBUG)
+    config = Config()
+    agent = new_magi_ai(config)
+    fire.Fire(agent)
 
 if __name__ == "__main__":
-    agent = Agent()
-    fire.Fire(agent)
+    main()
