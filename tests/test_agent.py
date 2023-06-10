@@ -1,59 +1,30 @@
 import unittest
-from unittest.mock import MagicMock
+from unittest.mock import patch, MagicMock
+from app.config import Config
+from app.agent import new_magi_ai, MAGI 
 
-from app.agent import Agent, ResponseProcessor
+class TestMAGI(unittest.TestCase):
 
+    @patch('app.agent.OpenAILanguageModel.process', return_value='mock_response')
+    @patch('app.agent.SummaryProcessor.summarize_responses', return_value='mock_summary')
+    def test_ask(self, mock_summarize_responses, mock_process):
+        # Mock configurations
+        mock_config = Config()
+        mock_config.OPENAI_API_KEY = 'mock_api_key'
 
-class TestResponseProcessor(unittest.TestCase):
-    def test_process_scientist_response(self):
-        llm_mock = MagicMock()
-        llm_mock.return_value = "respuesta de científico"
-        processor = ResponseProcessor(llm=llm_mock)
+        magi = new_magi_ai(mock_config)
+        question = "What is the weather today?"
 
-        response = processor.process_scientist_response("pregunta de ejemplo")
-        llm_mock.assert_called_once()
-        self.assertEqual(response, "respuesta de científico")
+        summary = magi.ask(question)
 
-    def test_process_mother_response(self):
-        llm_mock = MagicMock()
-        llm_mock.return_value = "respuesta de madre"
-        processor = ResponseProcessor(llm=llm_mock)
+        self.assertEqual(summary, 'mock_summary')
 
-        response = processor.process_mother_response("pregunta de ejemplo")
-        llm_mock.assert_called_once()
-        self.assertEqual(response, "respuesta de madre")
+        # Check if the `process` method of `OpenAILanguageModel` was called
+        self.assertEqual(mock_process.call_count, 3)
 
-    def test_process_woman_response(self):
-        llm_mock = MagicMock()
-        llm_mock.return_value = "respuesta de mujer"
-        processor = ResponseProcessor(llm=llm_mock)
+        # Check if the `summarize_responses` method of `SummaryProcessor` was called with the right argument
+        responses = {'scientist': 'mock_response', 'mother': 'mock_response', 'woman': 'mock_response'}
+        mock_summarize_responses.assert_called_with(responses)
 
-        response = processor.process_woman_response("pregunta de ejemplo")
-        llm_mock.assert_called_once()
-        self.assertEqual(response, "respuesta de mujer")
-
-    def test_ask(self):
-        agent = Agent()
-        agent.response_processor.process_scientist_response = MagicMock(
-            return_value="respuesta de científico"
-        )
-        agent.response_processor.process_mother_response = MagicMock(
-            return_value="respuesta de madre"
-        )
-        agent.response_processor.process_woman_response = MagicMock(
-            return_value="respuesta de mujer"
-        )
-        agent.summarize_llm = MagicMock(return_value="resumen de respuestas")
-
-        summary = agent.ask("pregunta de ejemplo")
-
-        agent.response_processor.process_scientist_response.assert_called_once()
-        agent.response_processor.process_mother_response.assert_called_once()
-        agent.response_processor.process_woman_response.assert_called_once()
-        agent.summarize_llm.assert_called_once()
-
-        self.assertEqual(summary, "resumen de respuestas")
-
-
-if __name__ == "__main__":
+if __name__ == '__main__':
     unittest.main()
